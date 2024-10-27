@@ -1,6 +1,14 @@
+echo Disable default NodeJs Version module
 dnf module disable nodejs -y
+echo $?
+
+echo Enable NodeJs module for V20
 dnf module enable nodejs:20 -y
+echo $?
+
+echo Install NodeJs
 dnf install nodejs -y
+echo $?
 
 useradd expense
 cp backend.service /etc/systemd/system/backend.service
