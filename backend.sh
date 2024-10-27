@@ -2,8 +2,9 @@ mysql_root_password=$1
 
 Print_Task_Heading() {
   echo $1
-  echo ##################### $1 ########################
+  echo "##################### $1 ########################" &>>/tmp/expense.log
 }
+
 Print_Task_Heading "Disable default NodeJs Version module"
 dnf module disable nodejs -y &>>/tmp/expense.log
 echo $?
