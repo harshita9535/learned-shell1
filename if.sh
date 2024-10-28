@@ -1,5 +1,5 @@
 simple if
-x=10
+x=$1
 if [ $x -gt 100 ]; then
   echo "$x is greater than 100"
 else
