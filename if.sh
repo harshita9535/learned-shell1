@@ -10,6 +10,7 @@ fi
 x=$1
 if [ -z $x ]; then
   echo Input missing
+  exit
 fi
 
 a=$1
