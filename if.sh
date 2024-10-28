@@ -10,7 +10,7 @@ fi
 x=$1
 
 if [ -z "$x" ]; then
-  echo Input missing
+  echo Input Missing
   exit 1
 fi
 
