@@ -8,7 +8,7 @@ else
 fi
 
 x=$1
-if [ -z $x ]; then
+if [ -z "$x" ]; then
   echo Input missing
   exit
 fi
