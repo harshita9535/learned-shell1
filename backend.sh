@@ -1,6 +1,8 @@
 source common.sh
-
 mysql_root_password=$1
+app_dir=/app
+component=backend
+
 
 if [ -z "${mysql_root_password}" ]; then
   echo Input Password is Missing.
@@ -21,25 +23,10 @@ Check_Status $?
 
 Print_Task_Heading "Adding application user"
 useradd expense &>>$LOG
-cp backend.service /etc/systemd/system/backend.service &>>$LOG
+cp backend.service /etc/systemd/system backend.service &>>$LOG
 Check_Status $?
 
-Print_Task_Heading "Clear the old content"
-rm -rf /app &>>$LOG
-Check_Status $?
-
-Print_Task_Heading "Create app directory"
-mkdir /app &>>$LOG
-Check_Status $?
-
-Print_Task_Heading "Download the app content"
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip &>>$LOG
-Check_Status $?
-
-Print_Task_Heading "Extract app content"
-cd /app &>>$LOG
-unzip /tmp/backend.zip &>>$LOG
-Check_Status $?
+App_PreReq
 
 Print_Task_Heading "Download NodeJs dependencies"
 cd /app &>>$LOG
