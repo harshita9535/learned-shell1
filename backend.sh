@@ -20,7 +20,10 @@ dnf install nodejs -y &>>$LOG
 Check_Status $?
 
 Print_Task_Heading "Adding application user"
-useradd expense &>>$LOG
+id expense
+if [ $? -ne 0 ]; then
+  useradd expense &>>$LOG
+fi
 cp backend.service /etc/systemd/system/backend.service &>>$LOG
 Check_Status $?
 
